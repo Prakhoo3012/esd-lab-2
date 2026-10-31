@@ -53,4 +53,22 @@ public class RegistrationController {
 
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping("/api/registrations/{registrationId}/transfer")
+    public ResponseEntity<RegistrationResponse> transfer(
+            @PathVariable Long registrationId,
+            @Valid @RequestBody TransferRegistrationRequest request) {
+
+        var r = registrationService.transfer(registrationId, request);
+        return ResponseEntity.ok(RegistrationResponse.from(r));
+    }
+
+    @PostMapping("/api/events/{eventId}/check-in")
+    public ResponseEntity<RegistrationResponse> checkIn(
+            @PathVariable Long eventId,
+            @Valid @RequestBody CheckInRequest request) {
+
+        var r = registrationService.checkIn(eventId, request);
+        return ResponseEntity.ok(RegistrationResponse.from(r));
+    }
 }

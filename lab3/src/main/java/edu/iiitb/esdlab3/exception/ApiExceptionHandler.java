@@ -73,6 +73,22 @@ public class ApiExceptionHandler {
         return error(HttpStatus.CONFLICT, ex.getMessage(), req);
     }
 
+    @ExceptionHandler(UnauthorizedOperationException.class)
+    public ResponseEntity<ApiError> unauthorized(
+            UnauthorizedOperationException ex,
+            HttpServletRequest req) {
+
+        return error(HttpStatus.FORBIDDEN, ex.getMessage(), req);
+    }
+
+    @ExceptionHandler(AlreadyCheckedInException.class)
+    public ResponseEntity<ApiError> alreadyCheckedIn(
+            AlreadyCheckedInException ex,
+            HttpServletRequest req) {
+
+        return error(HttpStatus.CONFLICT, ex.getMessage(), req);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiError> invalid(
             MethodArgumentNotValidException ex,
