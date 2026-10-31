@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Lab setup: install Lab Activity Monitor",
+            "type": "process",
+            "windows": {
+                "command": "powershell.exe",
+                "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}\\.lab\\setup.ps1", "${execPath}"]
+            },
+            "osx": {
+                "command": "/bin/sh",
+                "args": ["${workspaceFolder}/.lab/setup.sh", "${execPath}"]
+            },
+            "linux": {
+                "command": "/bin/sh",
+                "args": ["${workspaceFolder}/.lab/setup.sh", "${execPath}"]
+            },
+            "presentation": {
+                "reveal": "silent",
+                "panel": "dedicated",
+                "close": true
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
